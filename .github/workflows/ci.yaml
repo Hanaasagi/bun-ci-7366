@@ -13,20 +13,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: node index.js
+      - run: cat /etc/hosts | grep "localhost"
+      - run: node server.js &
+      - run: bun client.js
+      - run: node client.js
 
   test-macos:
     name: macOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: node index.js
+      - run: cat /etc/hosts | grep "localhost"
+      - run: node server.js &
+      - run: bun client.js
+      - run: node client.js
 
   # test-windows:
   #   name: Windows
