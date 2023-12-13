@@ -19,8 +19,10 @@ jobs:
           node-version: 18
       - run: cat /etc/hosts | grep "localhost"
       - run: node server.js &
-      - run: bun client.js
-      - run: node client.js
+      - run: bun connect-without-hostname.js
+      - run: node connect-without-hostname.js
+      - run: bun connect-with-hostname.js
+      - run: node connect-with-hostname.js
 
   test-macos:
     name: macOS
@@ -33,8 +35,10 @@ jobs:
           node-version: 18
       - run: cat /etc/hosts | grep "localhost"
       - run: node server.js &
-      - run: bun client.js
-      - run: node client.js
+      - run: bun connect-without-hostname.js
+      - run: node connect-without-hostname.js
+      - run: bun connect-with-hostname.js
+      - run: node connect-with-hostname.js
 
   # test-windows:
   #   name: Windows
